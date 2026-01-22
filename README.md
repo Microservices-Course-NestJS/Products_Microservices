@@ -42,8 +42,12 @@ npx prisma migrate dev --name init
 # For production:
 npx prisma migrate deploy
 ```
+4. Levantar el servidor de NATS
+```
+docker run -d --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
 
-4. Run locally
+```
+5. Run locally
 
 ```
 pnpm run start:dev
