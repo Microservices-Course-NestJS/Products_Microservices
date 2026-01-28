@@ -27,9 +27,6 @@ export class ProductsService{
     const lastPage = Math.ceil(totalRows/limit!)
     
     const skip = (page!-1) * limit!;
-    if(page!>lastPage){
-      throw new RpcException(`Error 404: Not exist that page only exists ${lastPage} pages`)
-    }
     return {
       data: await this.prisma.product.findMany({skip, take:limit, where:{available:true}}),
       meta: {

@@ -10,7 +10,7 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   // @Post()
-  @MessagePattern( {cmd: 'create_product'})
+  @MessagePattern({cmd:'create_product'})
   @UsePipes(new ValidationPipe({
     whitelist: true,
     forbidNonWhitelisted: true
@@ -21,7 +21,7 @@ export class ProductsController {
   }
 
   // @Get()
-  @MessagePattern( {cmd: 'find_all_products'})
+  @MessagePattern({cmd:'find_all_products'})
   findAll(
     @Payload()
     paginationDto: PaginationDto
@@ -30,23 +30,23 @@ export class ProductsController {
   }
 
   // @Get(':id')
-  @MessagePattern( {cmd: 'find_one_product'})
+  @MessagePattern({cmd:'find_one_product'})
   findOne(@Payload('id', ParseIntPipe) id: number) {
     return this.productsService.findOne(id);
   }
 
   // @Patch(':id')
-  @MessagePattern( {cmd: 'update_products'})
+  @MessagePattern({cmd:'update_products'})
   update(@Payload() updateProductDto: UpdateProductDto) {
     return this.productsService.update(updateProductDto.id, updateProductDto);
   }
 
   // @Delete(':id')
-  @MessagePattern( {cmd: 'delete_products'})
+  @MessagePattern({cmd:'delete_products'})
   remove(@Payload('id', ParseIntPipe) id: string) {
     return this.productsService.remove(+id);
   }
-  @MessagePattern( {cmd: 'validate_products'})
+  @MessagePattern({cmd:'validate_products'})
   validateProducts( @Payload() ids: number[]){
     return this.productsService.validateProducts(ids);
   }
