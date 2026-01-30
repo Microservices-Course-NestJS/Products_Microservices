@@ -84,6 +84,9 @@
     "chevrotain": {
       "lodash": "^4.17.23",
       "lodash-es": "^4.17.22"
+    },
+     "@prisma/dev": {
+      "hono": "^4.11.7"
     }
   }
 }
